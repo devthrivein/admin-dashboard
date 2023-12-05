@@ -315,7 +315,7 @@
               <thead>
                 <tr class="bg-gray-100 text-center">
                   <th class="w-1/4 py-4 px-6 text-gray-600">Order ID</th>
-                  <th class="w-1/4 py-4 px-6 text-gray-600">User ID</th>
+                  <th class="w-1/4 py-4 px-6 text-gray-600">Nama User</th>
                   <th class="w-1/4 py-4 px-6 text-gray-600">Nama Order</th>
                   <th class="w-1/4 py-4 px-6 text-gray-600">Waktu</th>
                   <th class="w-1/4 py-4 px-6 text-gray-600">Status</th>
@@ -327,6 +327,102 @@
             </table>
           </div>
           <!-- Section order status end -->
+
+          <!-- Section order manage order start -->
+          <div
+            class="shadow-lg rounded-lg p-10 overflow-hidden mx-4 md:mx-10 mt-10 bg-white flex flex-col items-center"
+          >
+            <div>
+              <h1 class="font-bold text-xl mb-6 text-center">Order Manager</h1>
+              <table class="w-full">
+                <tbody>
+                  <tr>
+                    <td
+                      class="py-4 px-6 border-b border-gray-200 grid grid-cols-2 gap-2"
+                    >
+                      <div class="mt-2 flex items-center">
+                        <label for="id" class="w-20 text-right pr-2"
+                          >Order ID:</label
+                        >
+                        <input
+                          type="text"
+                          id="id"
+                          name="id"
+                          class="border rounded px-2 py-1"
+                          oninput="toUpperCase(this)"
+                        />
+                      </div>
+                      <div class="mt-2 flex items-center">
+                        <label for="namaUser" class="w-20 text-right pr-2"
+                          >Nama User:</label
+                        >
+                        <input
+                          type="text"
+                          id="namaUser"
+                          name="namaUser"
+                          class="border rounded px-2 py-1"
+                          readonly
+                        />
+                      </div>
+                      <div class="mt-2 flex items-center">
+                        <label for="namaOrder" class="w-20 text-right pr-2"
+                          >Nama Order:</label
+                        >
+                        <input
+                          type="text"
+                          id="namaOrder"
+                          name="namaOrder"
+                          class="border rounded px-2 py-1"
+                          readonly
+                        />
+                      </div>
+                      <div class="mt-2 flex items-center">
+                        <label for="waktu" class="w-20 text-right pr-2"
+                          >Waktu:</label
+                        >
+                        <input
+                          type="text"
+                          id="waktu"
+                          name="waktu"
+                          class="border rounded px-2 py-1"
+                          readonly
+                        />
+                      </div>
+                      <div class="mt-2 flex items-center">
+                        <label for="status" class="w-20 text-right pr-2"
+                          >Status :</label
+                        >
+                        <select
+                          id="status"
+                          name="status"
+                          class="border rounded px-2 py-1"
+                        >
+                          <option value="baru">Baru</option>
+                          <option value="proses">Proses</option>
+                          <option value="selesai">Selesai</option>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="mt-2 flex items-center justify-center col-span-2">
+                <button
+                  onclick="cariOrderData()"
+                  class="bg-blue-500 mx-10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Cari
+                </button>
+                <button
+                  onclick="editOrderData()"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Edit
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Section order manage order end -->
 
           <!-- Section Banner Table Start -->
           <div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 mt-10">

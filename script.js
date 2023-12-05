@@ -33,7 +33,7 @@ function toggleDropdown() {
   }
 }
 // JWT token 
-const token = '';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYjhkMDQ1OS01NDc5LTRkZDctOGZmMC01MDQzYmYwZDQ3YzUiLCJuYW1lIjoiRGFuYXIgUmFmaWFyZGkgQWhtYWQiLCJleHAiOjE3MzMyMjg2MjR9.Gyu5cWfrUOaRd-LV0iIi1SL4FfWAuwzHI2aBKStwLv0';
 
 // Card Fetching data
 const apiUrlOrderCount = 'https://thrivein-api-v1-ihovaneucq-et.a.run.app/order-count';
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             row.appendChild(orderIDCell);
 
             const userIDCell = document.createElement('td');
-            userIDCell.textContent = order.user_id;
+            userIDCell.textContent = order.name;
             row.appendChild(userIDCell);
 
             const namaOrderCell = document.createElement('td');
@@ -197,6 +197,66 @@ document.addEventListener('DOMContentLoaded', async function () {
         console.error('Error fetching data:', error);
     }
 });
+
+//Order Manager
+   async function cariOrderData() {
+        const orderId = document.getElementById('id').value;
+
+        try {
+            const apiUrl = `https://thrivein-api-v1-ihovaneucq-et.a.run.app/order/${orderId}`;
+
+            const response = await fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Network response was not ok (${response.status} ${response.statusText})`);
+            }
+
+            const data = await response.json();
+
+            // Set nilai masing-masing input berdasarkan hasil pencarian
+            document.getElementById('namaUser').value = data.name || '';
+            document.getElementById('namaOrder').value = data.title || '';
+            document.getElementById('waktu').value = data.transaction_date || '';
+            document.getElementById('status').value = data.status || '';
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+      async function editOrderData() {
+        const orderId = document.getElementById('id').value;
+        const status = document.getElementById('status').value;
+
+        const apiUrl = `https://thrivein-api-v1-ihovaneucq-et.a.run.app/order-progress/${orderId}`;
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    status: status
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Network response was not ok (${response.status} ${response.statusText})`);
+            }
+
+            console.log('Order data updated successfully!');
+        } catch (error) {
+            console.error('Error updating data:', error);
+        }
+    }
+
+
 
 
 //Edit banner content 
