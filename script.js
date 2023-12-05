@@ -33,7 +33,7 @@ function toggleDropdown() {
   }
 }
 // JWT token 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYjhkMDQ1OS01NDc5LTRkZDctOGZmMC01MDQzYmYwZDQ3YzUiLCJuYW1lIjoiRGFuYXIgUmFmaWFyZGkgQWhtYWQiLCJleHAiOjE3MzMyMjg2MjR9.Gyu5cWfrUOaRd-LV0iIi1SL4FfWAuwzHI2aBKStwLv0';
+const token = '';
 
 // Card Fetching data
 const apiUrlOrderCount = 'https://thrivein-api-v1-ihovaneucq-et.a.run.app/order-count';
