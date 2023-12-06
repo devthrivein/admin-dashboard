@@ -310,7 +310,7 @@
           <!-- Stats Card Section end -->
 
           <!-- Section Order Status  -->
-          <div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10">
+          <div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 my-10">
             <table class="w-full table-fixed">
               <thead>
                 <tr class="bg-gray-100 text-center">
@@ -326,8 +326,17 @@
               </tbody>
             </table>
           </div>
+
+          <div
+            id="paginationContainerOrder"
+            class="flex justify-center mt-10 space-x-2"
+          >
+            <!-- Pagination  -->
+          </div>
           <!-- Section order status end -->
 
+          <!--  -->
+          <!--  -->
           <!-- Section order manage order start -->
           <div
             class="shadow-lg rounded-lg p-10 overflow-hidden mx-4 md:mx-10 mt-10 bg-white flex flex-col items-center"
@@ -424,6 +433,8 @@
           </div>
           <!-- Section order manage order end -->
 
+          <!--  -->
+          <!--  -->
           <!-- Section Banner Table Start -->
           <div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 mt-10">
             <table
@@ -516,6 +527,104 @@
             </div>
           </div>
           <!-- Section Edit banner end -->
+
+          <!--  -->
+          <!--  -->
+          <!-- Section Article Start -->
+          <div class="shadow-lg rounded-lg overflow-hidden mx-4 md:mx-10 mt-10">
+            <table
+              class="w-full bg-white border py-4 px-6 border-b border-gray-200 table-fixed"
+            >
+              <thead>
+                <tr class="bg-gray-100 w-full font-bold">
+                  <td class="py-4 px-6 border-b border-gray-200">Article ID</td>
+                  <td class="py-4 px-6 border-b border-gray-200">Title</td>
+                  <td class="py-4 px-6 border-b border-gray-200">Content</td>
+                  <td class="py-4 px-6 border-b border-gray-200">Banner Url</td>
+                  <td class="py-4 px-6 border-b border-gray-200">
+                    Uploaded Date
+                  </td>
+                </tr>
+              </thead>
+              <tbody id="articleTableBody" class="font-mono">
+                <!-- Hasi Fatching API  -->
+              </tbody>
+            </table>
+          </div>
+          <div
+            id="paginationContainerArticles"
+            class="flex justify-center mt-4"
+          >
+            <!-- pagination -->
+          </div>
+
+          <!-- Post Articles -->
+          <div
+            class="shadow-lg rounded-lg p-10 overflow-hidden mx-4 md:mx-10 mt-10 bg-white flex flex-col items-center"
+          >
+            <div>
+              <h1 class="font-bold text-xl mb-6 text-center">
+                Posting Articles
+              </h1>
+              <table class="w-full">
+                <tbody>
+                  <tr>
+                    <td
+                      class="py-4 px-6 border-b border-gray-200 grid grid-cols-2 gap-2"
+                    >
+                      <div class="mt-2 flex items-center">
+                        <label for="bannerUrlPost" class="w-20 text-right pr-2"
+                          >Banner Url:</label
+                        >
+                        <input
+                          type="text"
+                          id="bannerUrl"
+                          name="bannerUrl"
+                          class="border rounded px-2 py-1"
+                        />
+                      </div>
+                      <div class="mt-2 flex items-center">
+                        <label for="bannerTextPost" class="w-20 text-right pr-2"
+                          >Content:</label
+                        >
+                        <input
+                          type="text"
+                          id="bannerText"
+                          name="bannerText"
+                          class="border rounded px-2 py-1"
+                        />
+                      </div>
+                      <div class="mt-2 flex items-center">
+                        <label for="titlePost" class="w-20 text-right pr-2"
+                          >Title:</label
+                        >
+                        <input
+                          type="text"
+                          id="title"
+                          name="title"
+                          class="border rounded px-2 py-1"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="mt-2 flex items-center justify-center col-span-2">
+                <button
+                  onclick="postArticle()"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Upload
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section Article End -->
+
+          <!-- Section Post Article Start -->
+
+          <!-- Section Post Article End -->
         </section>
       </div>
     </main>
