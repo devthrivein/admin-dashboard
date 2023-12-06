@@ -1,9 +1,3 @@
-// Function CAPSLOCK Input ID
-function toUpperCase(input) {
-        input.value = input.value.toUpperCase();
-}
-
-// JWT token 
 const token = '';
 
 // Card Fetching data
@@ -400,3 +394,71 @@ const postArticle = async () => {
   }
 };
 
+// Function to fetch services data from the API
+const fetchServices = async () => {
+    const apiUrl = 'https://thrivein-api-v1-ihovaneucq-et.a.run.app/services';
+
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`Network response was not ok (${response.status} ${response.statusText})`);
+        }
+
+        const data = await response.json();
+        return data.services;
+    } catch (error) {
+        console.error('Error fetching services data:', error);
+        return [];
+    }
+};
+
+// Function to render services data in the table
+// Function to render services data in the table
+const renderServicesTable = (services) => {
+    const tableBody = document.getElementById('servicesTableBody');
+
+    services.forEach(service => {
+        const row = document.createElement('tr');
+        
+        const categoryCell = document.createElement('td');
+        categoryCell.textContent = service.category;
+        row.appendChild(categoryCell);
+
+        const titleCell = document.createElement('td');
+        titleCell.textContent = service.title;
+        row.appendChild(titleCell);
+        
+        const descriptionCell = document.createElement('td');
+        descriptionCell.textContent = service.description;
+        row.appendChild(descriptionCell);
+        
+        const iconUrlCell = document.createElement('td');
+        iconUrlCell.textContent = service.icon_url;
+        row.appendChild(iconUrlCell);
+
+        const serviceIdCell = document.createElement('td');
+        serviceIdCell.textContent = service.color;
+        row.appendChild(serviceIdCell);
+
+
+
+        tableBody.appendChild(row);
+    });
+};
+
+// Initialize the page with services data
+document.addEventListener('DOMContentLoaded', async function () {
+    const services = await fetchServices();
+    renderServicesTable(services);
+});
+
+// Function CAPSLOCK Input ID
+function toUpperCase(input) {
+        input.value = input.value.toUpperCase();
+}
