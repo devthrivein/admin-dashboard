@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="script.js" defer></script>
+    <script src="loginAuth.js" defer></script>
   </head>
   <body>
     <!-- Side Bar Start -->
@@ -44,7 +45,10 @@
             @click.outside="profileOpen = false"
             class="h-9 w-9 overflow-hidden rounded-full"
           >
-            <img src="https://plchldr.co/i/40x40?bg=111111" alt="plchldr.co" />
+            <img
+              src="https://storage.googleapis.com/thrivein-asset/website/Index/1.png"
+              alt="plchldr.co"
+            />
           </button>
 
           <!-- dropdown profile -->
@@ -55,11 +59,11 @@
           >
             <div class="flex items-center space-x-2 p-2">
               <img
-                src="https://plchldr.co/i/40x40?bg=111111"
+                src="https://storage.googleapis.com/thrivein-asset/website/Index/1.png"
                 alt="plchldr.co"
                 class="h-9 w-9 rounded-full"
               />
-              <div class="font-medium">Hafiz Haziq</div>
+              <div id="adminNameDisplay" class="font-medium"></div>
             </div>
 
             <div class="flex flex-col space-y-3 p-2">
@@ -73,6 +77,7 @@
             <div class="p-2">
               <button
                 class="flex items-center space-x-2 transition hover:text-blue-600"
+                onclick="logoutAdmin()"
               >
                 <svg
                   class="h-4 w-4"
@@ -112,11 +117,11 @@
           </a>
 
           <a
-            href="chat.html"
+            href="chat-section.html"
             class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
           >
             <span class="text-2xl"><i class="bx bx-cart"></i></span>
-            <span> Pesanan </span>
+            <span> Chat </span>
           </a>
         </aside>
         <!-- aside start -->
@@ -724,7 +729,7 @@
       </div>
     </main>
     <!-- Layout page end -->
-    </script>
+
     <!-- Side Bar end -->
   </body>
 </html>

@@ -1,5 +1,5 @@
 // Isi dengan token jwt
-const token = '';
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYjhkMDQ1OS01NDc5LTRkZDctOGZmMC01MDQzYmYwZDQ3YzUiLCJuYW1lIjoiRGFuYXIgUmFmaWFyZGkgQWhtYWQiLCJleHAiOjE3MzM0NTI3ODh9.VFquGQ7k4mz8CTEv4x3bOaBHS1RkcOKVSSfQ82wX01Q';
 
 // Fungsi ini berguna untuk inputan automatis Uppercase
 function toUpperCase(input) {
@@ -543,3 +543,5 @@ const editService = async () => {
     console.error('Error updating service:', error);
   }
 };
+
+
