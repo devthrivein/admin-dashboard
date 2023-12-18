@@ -4,28 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Section</title>
-    <!-- Include the Tailwind CSS file -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
   </head>
   <body class="bg-gray-100 font-sans">
-    <div class="max-w-screen-md mx-auto my-20">
-      <div
-        id="chatContainer"
-        class="bg-white rounded shadow-md overflow-hidden"
-      >
-        <ul
-          id="chatMessages"
-          class="list-none p-4 overflow-y-scroll max-h-96"
-        ></ul>
-        <input
-          type="text"
-          id="chatInput"
-          class="w-full p-4 box-border border-t border-gray-300 bg-gray-100"
-          placeholder="Type your message..."
-        />
+    <div class="max-w-6xl mx-auto my-20">
+      <div id="chatContainer" class="bg-white rounded shadow-md flex max-h-96">
+        <!-- ServiceId Section -->
+        <div
+          id="serviceIdSection"
+          class="bg-white rounded shadow-md overflow-hidden max-h-screen overflow-y-scroll w-1/4 p-4"
+        >
+          <div class="card-list">
+            <h2 class="text-lg font-semibold mb-2 p-4 bg-gray-200">
+              Service ID
+            </h2>
+            <ul id="serviceIdList" class="list-none">
+              <!-- Display service IDs as cards -->
+            </ul>
+          </div>
+        </div>
+
+        <!-- Participants List -->
+        <div
+          id="serviceDetailsSection"
+          class="bg-white rounded shadow-md overflow-hidden max-h-screen overflow-y-scroll w-1/4 p-4"
+        >
+          <div class="card-list">
+            <h2 class="text-lg font-semibold mb-2 p-4 bg-gray-200">User :</h2>
+            <ul id="serviceDetailsContent" class="list-none"></ul>
+          </div>
+        </div>
+
+        <!-- Chat Room Section -->
+        <div class="flex-1 flex flex-col bg-gray-200">
+          <div class="card-list overflow-y-scroll">
+            <!-- Room Chat -->
+            <ul id="chatMessages" class="list-none p-4 flex-1">
+              <!-- Display chat messages as cards -->
+            </ul>
+            <div
+              class="flex items-center p-4 border-t border-gray-300 bg-white"
+            >
+              <input
+                type="text"
+                id="chatInput"
+                class="w-full p-2 border border-gray-300 rounded"
+                placeholder="Type your message..."
+              />
+              <button
+                id="sendMessageBtn"
+                class="ml-2 bg-blue-500 text-white px-4 py-2 rounded"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
 //Fetching data order (tampilkan di tabel order)
-  const apiUrlOrder = 'https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/order';
+const apiUrlOrder = 'https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/order';
         //token
         const fetchDataOrder = async (page, size) => {
             const response = await fetch(`${apiUrlOrder}?page=${page}&size=${size}`, {
@@ -95,11 +95,11 @@ document.addEventListener('DOMContentLoaded', async function () {
             orders.forEach(order => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${order.order_id}</td>
-                    <td>${order.name}</td>
-                    <td>${order.title}</td>
-                    <td>${new Date(order.transaction_date).toLocaleString()}</td>
-                    <td>${order.status}</td>
+                    <td class="px-4 py-2">${order.order_id}</td>
+                    <td class="px-4 py-2">${order.name}</td>
+                    <td class="px-4 py-2">${order.title}</td>
+                    <td class="px-4 py-2">${new Date(order.transaction_date).toLocaleString()}</td>
+                    <td class="px-4 py-2">${order.status}</td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         initOrder();
 
 //Order Manager Page
-   async function cariOrderData() {
+async function cariOrderData() {
         const orderId = document.getElementById('id').value;
 
         try {
@@ -170,7 +170,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.error('Error fetching data:', error);
         }
     }
-      async function editOrderData() {
+
+async function editOrderData() {
         const orderId = document.getElementById('id').value;
         const status = document.getElementById('status').value;
 
@@ -279,7 +280,7 @@ async function updateBannerData() {
 //fetching data Articles (tampilkan di tabel articles)
 document.addEventListener('DOMContentLoaded', async function () {
     const apiUrl = 'https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/articles';
-    const pageSize = 10; // Set the page size according to your requirement
+    const pageSize = 10;
 
     const fetchDataArticle = async (page, size) => {
          const response = await fetch(`${apiUrl}?page=${page}&size=${size}`, {
@@ -300,6 +301,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         const tableBody = document.getElementById('articleTableBody');
         tableBody.innerHTML = ''; // Clear existing content
 
+         const truncateText = (text, maxLength) => {
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+    };
+
         articles.forEach(article => {
             const row = document.createElement('tr');
             const idCell = document.createElement('td');
@@ -310,9 +315,10 @@ document.addEventListener('DOMContentLoaded', async function () {
             titleCell.textContent = article.title;
             row.appendChild(titleCell);
 
-            const contentCell = document.createElement('td');
-            contentCell.textContent = article.content;
-            row.appendChild(contentCell);
+           const contentCell = document.createElement('td');
+        // Truncate content to a certain length (e.g., 100 characters)
+        contentCell.textContent = truncateText(article.content, 100);
+        row.appendChild(contentCell);
 
             const bannerUrlCell = document.createElement('td');
             bannerUrlCell.textContent = article.banner_url;
@@ -424,7 +430,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
-   const renderServicesTable = (services) => {
+
+const renderServicesTable = (services) => {
     const tableBody = document.getElementById('servicesTableBody');
 
     services.forEach(service => {
@@ -453,13 +460,12 @@ document.addEventListener('DOMContentLoaded', async function () {
         tableBody.appendChild(row);
     });
 };
-
 // Service Manager Page
-  const serviceId = document.getElementById('serviceId').value;
+const serviceId = document.getElementById('serviceId').value;
 
-  const apiUrl = `https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/getservice/`;
+const apiUrl = `https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/getservice/`;
 
-  const fetchServiceDetails = async (serviceId) => {
+const fetchServiceDetails = async (serviceId) => {
     const url = apiUrl + serviceId;
     try {
       const response = await fetch(url, {
@@ -479,7 +485,7 @@ document.addEventListener('DOMContentLoaded', async function () {
       console.error('Error fetching service details:', error);
       return null;
     }
-  };
+};
 
 const fillInputFields = (serviceDetails) => {
   const iconUrlInput = document.getElementById('iconUrl_services');

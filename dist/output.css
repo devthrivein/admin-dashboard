@@ -645,8 +645,8 @@ video {
   margin-top: 2rem;
 }
 
-.box-border {
-  box-sizing: border-box;
+.ml-2 {
+  margin-left: 0.5rem;
 }
 
 .flex {
@@ -677,8 +677,67 @@ video {
   height: 100vh;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
+.h-1\/5 {
+  height: 20%;
+}
+
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .max-h-96 {
   max-height: 24rem;
+}
+
+.max-h-max {
+  max-height: -moz-max-content;
+  max-height: max-content;
+}
+
+.max-h-52 {
+  max-height: 13rem;
+}
+
+.max-h-72 {
+  max-height: 18rem;
+}
+
+.max-h-full {
+  max-height: 100%;
+}
+
+.max-h-fit {
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+}
+
+.max-h-px {
+  max-height: 1px;
+}
+
+.max-h-2 {
+  max-height: 0.5rem;
+}
+
+.max-h-2\.5 {
+  max-height: 0.625rem;
+}
+
+.max-h-screen {
+  max-height: 100vh;
 }
 
 .min-h-screen {
@@ -725,16 +784,28 @@ video {
   max-width: 28rem;
 }
 
-.max-w-xl {
-  max-width: 36rem;
-}
-
 .max-w-screen-md {
   max-width: 768px;
 }
 
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.max-w-6xl {
+  max-width: 72rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .table-fixed {
   table-layout: fixed;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .list-none {
@@ -757,8 +828,20 @@ video {
   place-content: center;
 }
 
+.place-items-baseline {
+  place-items: baseline;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
+}
+
+.items-baseline {
+  align-items: baseline;
 }
 
 .justify-center {
@@ -820,6 +903,22 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.overflow-y-clip {
+  overflow-y: clip;
+}
+
+.overflow-y-visible {
+  overflow-y: visible;
 }
 
 .overflow-y-scroll {
@@ -912,6 +1011,16 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .p-10 {
   padding: 2.5rem;
 }
@@ -987,6 +1096,10 @@ video {
 
 .text-right {
   text-align: right;
+}
+
+.align-bottom {
+  vertical-align: bottom;
 }
 
 .font-mono {
