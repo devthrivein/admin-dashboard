@@ -8,64 +8,184 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
     />
+    <script src="script.js" defer></script>
+    <script src="loginAuth.js" defer></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+    />
   </head>
-  <body class="bg-gray-100 font-sans">
-    <div class="max-w-6xl mx-auto my-20">
-      <div id="chatContainer" class="bg-white rounded shadow-md flex max-h-96">
-        <!-- ServiceId Section -->
-        <div
-          id="serviceIdSection"
-          class="bg-white rounded shadow-md overflow-hidden max-h-screen overflow-y-scroll w-1/4 p-4"
-        >
-          <div class="card-list">
-            <h2 class="text-lg font-semibold mb-2 p-4 bg-gray-200">
-              Service ID
-            </h2>
-            <ul id="serviceIdList" class="list-none">
-              <!-- Display service IDs as cards -->
-            </ul>
-          </div>
-        </div>
+  <!-- Side Bar Start -->
+  <!-- component -->
 
-        <!-- Participants List -->
-        <div
-          id="serviceDetailsSection"
-          class="bg-white rounded shadow-md overflow-hidden max-h-screen overflow-y-scroll w-1/4 p-4"
-        >
-          <div class="card-list">
-            <h2 class="text-lg font-semibold mb-2 p-4 bg-gray-200">User :</h2>
-            <ul id="serviceDetailsContent" class="list-none"></ul>
-          </div>
-        </div>
+  <!-- Layout page Start -->
+  <main class="min-h-screen w-full bg-gray-100 text-gray-700" x-data="layout">
+    <!-- header page start-->
+    <header
+      class="flex w-full items-center justify-between border-b-2 border-gray-200 bg-white p-2"
+    >
+      <!-- logo -->
+      <div class="flex items-center space-x-2">
+        <button type="button" class="text-3xl" @click="asideOpen = !asideOpen">
+          <i class="bx bx-menu"></i>
+        </button>
+        <div>Thrive Admin Dashboard</div>
+      </div>
 
-        <!-- Chat Room Section -->
-        <div class="flex-1 flex flex-col bg-gray-200">
-          <div class="card-list overflow-y-scroll">
-            <!-- Room Chat -->
-            <ul id="chatMessages" class="list-none p-4 flex-1">
-              <!-- Display chat messages as cards -->
-            </ul>
-            <div
-              class="flex items-center p-4 border-t border-gray-300 bg-white"
+      <!-- button profile -->
+      <div>
+        <button
+          type="button"
+          @click="profileOpen = !profileOpen"
+          @click.outside="profileOpen = false"
+          class="h-9 w-9 overflow-hidden rounded-full"
+        >
+          <img
+            src="https://storage.googleapis.com/thrivein-asset/website/Index/1.png"
+            alt="img"
+          />
+        </button>
+
+        <!-- dropdown profile -->
+        <div
+          class="absolute right-2 mt-1 w-48 divide-y divide-gray-200 rounded-md border border-gray-200 bg-white shadow-md"
+          x-show="profileOpen"
+          x-transition
+        >
+          <div class="flex flex-col space-y-3 p-2">
+            <a href="register.html" class="transition hover:text-blue-600"
+              >Register New admin</a
             >
-              <input
-                type="text"
-                id="chatInput"
-                class="w-full p-2 border border-gray-300 rounded"
-                placeholder="Type your message..."
-              />
-              <button
-                id="sendMessageBtn"
-                class="ml-2 bg-blue-500 text-white px-4 py-2 rounded"
+          </div>
+
+          <div class="p-2">
+            <button
+              class="flex items-center space-x-2 transition hover:text-blue-600"
+              onclick="logoutAdmin()"
+            >
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                Send
-              </button>
-            </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                ></path>
+              </svg>
+              <div>Log Out</div>
+            </button>
           </div>
         </div>
       </div>
-    </div>
+    </header>
+    <!-- header page end-->
 
-    <script type="module" src="app.js"></script>
-  </body>
+    <div class="flex">
+      <!-- aside start -->
+      <aside
+        class="flex w-72 flex-col space-y-2 border-r-2 border-gray-200 bg-white p-2"
+        style="height: 90.5vh"
+        x-show="asideOpen"
+      >
+        <a
+          href="index.html"
+          class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
+        >
+          <span class="text-2xl"></span>
+          <span>Dashboard</span>
+        </a>
+
+        <a
+          href="chat-section.html"
+          class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
+        >
+          <span class="text-2xl"></span>
+          <span> Chat </span>
+        </a>
+
+        <a
+          href="chat-section.html"
+          class="flex items-center space-x-1 rounded-md px-2 py-3 hover:bg-gray-100 hover:text-blue-600"
+        >
+          <span class="text-2xl"></span>
+          <span> Transaksi </span>
+        </a>
+      </aside>
+      <!-- aside end -->
+
+      <body class="bg-gray-100 font-sans">
+        <div class="max-w-full mx-auto my-20">
+          <div
+            id="chatContainer"
+            class="bg-white rounded shadow-md flex max-h-96"
+          >
+            <!-- ServiceId Section -->
+            <div
+              id="serviceIdSection"
+              class="bg-white rounded shadow-md overflow-hidden max-h-screen overflow-y-scroll w-1/4 p-4"
+            >
+              <div class="card-list">
+                <h2 class="text-lg font-semibold mb-2 p-4 bg-gray-200">
+                  Service ID
+                </h2>
+                <ul id="serviceIdList" class="list-none">
+                  <!-- Display service IDs as cards -->
+                </ul>
+              </div>
+            </div>
+
+            <!-- Participants List -->
+            <div
+              id="serviceDetailsSection"
+              class="bg-white rounded shadow-md overflow-hidden max-h-screen overflow-y-scroll w-1/4 p-4"
+            >
+              <div class="card-list">
+                <h2 class="text-lg font-semibold mb-2 p-4 bg-gray-200">
+                  User :
+                </h2>
+                <ul id="serviceDetailsContent" class="list-none"></ul>
+              </div>
+            </div>
+
+            <!-- Chat Room Section -->
+            <div class="flex-1 flex flex-col bg-gray-200">
+              <div class="card-list overflow-y-scroll">
+                <!-- Room Chat -->
+                <ul id="chatMessages" class="list-none p-4 flex-1">
+                  <!-- Display chat messages as cards -->
+                </ul>
+                <div
+                  class="flex items-center p-4 border-t border-gray-300 bg-white"
+                >
+                  <input
+                    type="text"
+                    id="chatInput"
+                    class="w-full p-2 border border-gray-300 rounded"
+                    placeholder="Type your message..."
+                  />
+                  <button
+                    id="sendMessageBtn"
+                    class="ml-2 bg-blue-500 text-white px-4 py-2 rounded"
+                  >
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script type="module" src="app.js"></script>
+      </body>
+    </div>
+  </main>
 </html>

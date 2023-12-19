@@ -1,3 +1,5 @@
+// INI UNTUK INDEX
+
 // Isi dengan token jwt
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxYjhkMDQ1OS01NDc5LTRkZDctOGZmMC01MDQzYmYwZDQ3YzUiLCJuYW1lIjoiRGFuYXIgUmFmaWFyZGkgQWhtYWQiLCJleHAiOjE3MzM0NTI3ODh9.VFquGQ7k4mz8CTEv4x3bOaBHS1RkcOKVSSfQ82wX01Q';
 
@@ -6,7 +8,7 @@ function toUpperCase(input) {
         input.value = input.value.toUpperCase();
 }
 // Fungsi Membuka side section 
-      document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', () => {
         Alpine.data('layout', () => ({
           profileOpen: false,
           asideOpen: true,

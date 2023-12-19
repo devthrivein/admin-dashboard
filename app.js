@@ -1,17 +1,31 @@
-// Import Firebase modules using full import path
+// INI UNTUK CHAT-SECTION
+
+
+
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js';
 import { addDoc, collection, getFirestore, onSnapshot, orderBy, query, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js';
 
+
+//Configurasi ke firebase menggunakan web app
 const firebaseConfig = {
-  
+  apiKey: "AIzaSyCKcHOjMgXwi-Dc6AnuhkdAFvq8sUilHZI",
+  authDomain: "thrivein-dev-v1.firebaseapp.com",
+  projectId: "thrivein-dev-v1",
+  storageBucket: "thrivein-dev-v1.appspot.com",
+  messagingSenderId: "702104523475",
+  appId: "1:702104523475:web:408fec5b1b1208b2253a26"
 };
 
-// Initialize Firebase
+// Initialisasi Firebase
 const app = initializeApp(firebaseConfig);
 const database = getFirestore(app);
 
+// variable global 
+let userId;
+let serviceId;
 
-// Function to get chat messages
+
+// Fungsi dapet message berdasarkan userId dan serviceId
 function getMessages(userId, serviceId) {
   // Reference to the subcollection "messages-from-$userId" within the document "serviceId"
   const collectionReference = collection(database, "consultation_service", serviceId, `messages-from-${userId}`);
@@ -48,6 +62,7 @@ function getMessages(userId, serviceId) {
   });
 }
 
+// Menampilkkan messagess ke html
 function displayMessages(messages) {
   const chatMessagesElement = document.getElementById("chatMessages");
   chatMessagesElement.innerHTML = "";
@@ -95,6 +110,8 @@ function displayMessages(messages) {
 }
 
 
+// send messages error (undefine userId dan serviceId)
+// Mengirim pesan (data yg dikirim ketika kirim pesan dari admin dashboard)
 const sendMessage = async (userId, serviceId, message, fileUrl) => {
   const collectionRef = collection(database, "consultation_service", serviceId, `messages-from-${userId}`);
 
@@ -104,25 +121,43 @@ const sendMessage = async (userId, serviceId, message, fileUrl) => {
       message,
       admin: true,
       createdAt: serverTimestamp(),
-      fileUrl: '',
-
+      fileUrl: fileUrl || '', // Use fileUrl if provided, otherwise an empty string
     });
   } catch (error) {
     console.error("Error sending message: ", error);
   }
 };
+// dari button
+document.getElementById('sendMessageBtn').addEventListener('click', async () => {
+  const chatInput = document.getElementById("chatInput");
+  const message = chatInput.value.trim();
 
+  if (message !== "" && userId && serviceId) {
+    await sendMessage(userId, serviceId, message);
+    chatInput.value = "";
+  } else {
+    console.error("Invalid userId, serviceId, or empty message.");
+  }
+});
+const chatInput = document.getElementById("chatInput");
+chatInput.addEventListener("keydown", async (event) => {
+  if (event.key === "Enter" && chatInput.value.trim() !== "") {
+    const message = chatInput.value.trim();
+    await sendMessage(userId, serviceId, message);
+    chatInput.value = "";
+  }
+});
+
+// ini fetch api untuk get list serviceId dan UserId 
 
  document.addEventListener("DOMContentLoaded", async function () {
     try {
-      const bearerToken = ''; 
+      const bearerToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NzEyZTNhZC0yMGJmLTRmZWEtYmMxNS05MzJiN2JiYTRlMzgiLCJuYW1lIjoiYWRtaW4iLCJleHAiOjE3MDI5OTgzNTl9.k1WZAQUGItFFNw1K5MUOAgbIygWvNIJMvcc1yl3cnfg'; 
       const serviceIdList = document.getElementById('serviceIdList');
       const serviceDetailsContent = document.getElementById('serviceDetailsContent');
       const uniqueServiceIds = new Set();
 
     serviceIdList.innerHTML = ''; 
-
-    // Fetch data from the API with the Bearer token
     const response = await fetch('https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/consultation-service', {
       headers: {
         'Authorization': `Bearer ${bearerToken}`
@@ -143,6 +178,7 @@ const sendMessage = async (userId, serviceId, message, fileUrl) => {
         listItem.textContent = serviceId;
         listItem.classList.add('border-b', 'border-gray-300', 'p-4', 'hover:bg-gray-100', 'cursor-pointer');
 
+
 listItem.addEventListener('click', async () => {
     try {
         const detailsResponse = await fetch(`https://thrivein-api-v1-0-0-sxbz2gldiq-et.a.run.app/consultation-service/${serviceId}`, {
@@ -156,25 +192,25 @@ listItem.addEventListener('click', async () => {
         }
 
         const detailsData = await detailsResponse.json();
-        serviceDetailsContent.innerHTML = ''; // Clear existing content
+        serviceDetailsContent.innerHTML = ''; 
 
-                detailsData.forEach(async item => {
-            const detailsItem = document.createElement('li');
-            const userId = item.collection_id.split('-').pop();
-            detailsItem.textContent = `${userId}`;
-            detailsItem.classList.add('border-b', 'border-gray-300', 'p-4', 'hover:bg-gray-100', 'cursor-pointer');
+    //split userId agar mendapatkan idnya saja
+    detailsData.forEach(async item => {
+    const detailsItem = document.createElement('li');
+    const userIdPrefix = "messages-from-";
+    const userId = item.collection_id.substring(userIdPrefix.length);
+    detailsItem.textContent = `${userId}`;
+    detailsItem.classList.add('border-b', 'border-gray-300', 'p-4', 'hover:bg-gray-100', 'cursor-pointer');
 
-            // Use local variables for userId and serviceId to capture the correct values
-            const clickedUserId = userId;
-            const clickedServiceId = serviceId;
 
-            detailsItem.addEventListener('click', async () => {
-                // Fetch and display messages for the clicked userId and clickedServiceId
-                await getMessages(clickedUserId, clickedServiceId);
-            });
+  detailsItem.addEventListener('click', async () => {
+ 
+    //setelah mendapatkan userId dan serviceId dibawa ke fungsi getMessages di atas 
+  await getMessages(userId, serviceId);    });
 
-            serviceDetailsContent.appendChild(detailsItem);
-        });
+    serviceDetailsContent.appendChild(detailsItem);
+});
+
     } catch (error) {
         console.error('Error fetching details:', error);
     }
@@ -182,21 +218,10 @@ listItem.addEventListener('click', async () => {
 
 serviceIdList.appendChild(listItem);
 uniqueServiceIds.add(serviceId);
+
 }
 });
 } catch (error) {
 console.error('Error fetching data:', error);
 }
-});
-
-
-
-
-const chatInput = document.getElementById("chatInput");
-chatInput.addEventListener("keydown", async (event) => {
-  if (event.key === "Enter" && chatInput.value.trim() !== "") {
-    const message = chatInput.value.trim();
-    await sendMessage(userId, serviceId, message);
-    chatInput.value = "";
-  }
 });
