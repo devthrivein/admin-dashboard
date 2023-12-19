@@ -8,12 +8,12 @@ import { addDoc, collection, getFirestore, onSnapshot, orderBy, query, serverTim
 
 //Configurasi ke firebase menggunakan web app
 const firebaseConfig = {
-  apiKey: "AIzaSyCKcHOjMgXwi-Dc6AnuhkdAFvq8sUilHZI",
-  authDomain: "thrivein-dev-v1.firebaseapp.com",
-  projectId: "thrivein-dev-v1",
-  storageBucket: "thrivein-dev-v1.appspot.com",
-  messagingSenderId: "702104523475",
-  appId: "1:702104523475:web:408fec5b1b1208b2253a26"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 // Initialisasi Firebase
