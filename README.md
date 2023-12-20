@@ -38,6 +38,7 @@ Welcome to the ThriveIn Admin Dashboard! This is a specialized admin panel desig
 
 ## Screenshot 
 <div style="display:flex;">
-    <img alt="login" title="login" width="200px" src="img/" />
-
+   <img alt="login" title="login" width="" src="img/login.png" />
+   <img alt="contentManage" title="contentManage" width="" src="img/contentManage.png" />
+   <img alt="ordermanage" title="orderManage" width="" src="img/orderManage.png" />
 </div>
