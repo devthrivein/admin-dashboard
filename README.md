@@ -6,13 +6,13 @@ Welcome to the ThriveIn Admin Dashboard! This is a specialized admin panel desig
 ## Features
 
 1. **Order Management:**
-   Easily view, manage, and track incoming orders from ThriveIn app users. The intuitive interface allows you to categorize orders, mark statuses, and respond to users.
+   Easily view, manage, and track incoming orders from ThriveIn app users.
 
 2. **Mobile Content Editing:**
-   Quickly and efficiently edit content based on side services for mobile applications, ensuring responsive and optimized content.
+   Quickly and efficiently edit content which use server side.
 
 3. **Chat Consultation Feature:**
-   Engage with users in real-time through the chat consultation feature. Receive and respond to questions or assistance requests promptly.
+   Engage with users in real-time through the chat consultation feature. Receive and respond to questions.
 
 
 ## Technologies Used
