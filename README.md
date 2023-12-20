@@ -35,3 +35,9 @@ Welcome to the ThriveIn Admin Dashboard! This is a specialized admin panel desig
    Ensure all dependencies are installed by running the following command:
    ```bash
    npm install
+
+## Screenshot 
+<div style="display:flex;">
+    <img alt="login" title="login" width="200px" src="img/" />
+
+</div>
