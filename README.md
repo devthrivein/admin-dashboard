@@ -29,12 +29,11 @@ Welcome to the ThriveIn Admin Dashboard! This is a specialized admin panel desig
 - **Firebase:**
   Firebase as database where we store data and get data using Rest API.
 
-## Getting Started
+## Note
 
-1. **Install Dependencies:**
-   Ensure all dependencies are installed by running the following command:
-   ```bash
-   npm install
+1. **Note:**
+   This admin dashboard still on development, not running in the best performance, function, etc.
+  
 
 ## Screenshot 
 <div style="display:flex;">
